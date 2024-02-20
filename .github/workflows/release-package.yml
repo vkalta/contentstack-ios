@@ -14,10 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Setup CocoaPods
-        run: |
-          gem install cocoapods
-          pod setup
+      # - name: Setup CocoaPods
+      #   run: |
+      #     gem install cocoapods
+      #     pod setup
         
       - name: Install dependencies
         run: |
