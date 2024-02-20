@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: |
           # Add commands to build and test your package
-          xcodebuild -workspace Contentstack.xcworkspace -scheme 'Contentstack' -destination 'platform=iOS Simulator,name=iPhone 13 Pro' | xcpretty && exit ${PIPESTATUS[0]}
+          xcodebuild -workspace Contentstack.xcworkspace -scheme 'Contentstack' -destination 'platform=iOS Simulator,name=iPhone 13 Pro'
 
       - name: Tag release
         id: tag
