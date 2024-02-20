@@ -25,6 +25,10 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
 
+      - name: Install dependencies
+        run: |
+          pod install --repo-update
+
       - name: Build
         run: |
           # Add commands to build and test your package
