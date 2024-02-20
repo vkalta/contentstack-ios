@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     name: Release Contentstack iOS Delivery SDK Release
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
@@ -19,14 +19,16 @@ jobs:
       #     gem install cocoapods
       #     pod setup
         
-      - name: Install dependencies
-        run: |
-          pod install --repo-update
+      # - name: Install dependencies
+      #   run: |
+      #     pod install --repo-update
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
 
       - name: Build
         run: |
           # Add commands to build and test your package
-          xcodebuild -workspace Contentstack.xcworkspace -scheme 'Contentstack' -destination 'platform=iOS Simulator,name=iPhone 13 Pro'
+          xcodebuild -workspace Contentstack.xcworkspace -scheme 'Contentstack' -destination 'platform=iOS Simulator,name=iPhone 13 Pro' | xcpretty && exit ${PIPESTATUS[0]}
 
       - name: Tag release
         id: tag
